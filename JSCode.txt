@@ -1,0 +1,217 @@
+**************************************************************************
+**************************************************************************
+Setup env:
+1. install node.js
+2. install sublime
+3. configure  node : tools>Build system > new Build system
+	copy on opened window:
+{
+"cmd": ["node", "$file"],
+"selector": "source.js"
+}
+**************************************************************************
+**************************************************************************
+Example01: classes
+
+class Developer {
+  constructor(firstname, lastname) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+  }
+  getName() {
+    return this.firstname + ' ' + this.lastname;
+  }
+}
+var me = new Developer('Robin', 'Wieruch');
+console.log(me.getName());
+
+Example02: Inheritance
+Create classe ReactDeveloper inherit from  Developer and add a new  method to return jobName ( a new attribute)
+
+Example03: Arrow Functions in 
+
+// JavaScript ES5 function
+function getGreeting() {
+  return 'Welcome to JavaScript';
+}
+
+// JavaScript ES6 arrow function with body
+const getGreeting = () => {
+  return 'Welcome to JavaScript';
+}
+
+// JavaScript ES6 arrow function without body and implicit return
+const getGreeting = () =>
+  'Welcome to JavaScript';
+  
+call getGreeting method!
+
+Example04: React Class Component Syntax
+class Counter extends Component {
+  state = {
+    counter: 0,
+  };
+
+  onIncrement = () => {
+    this.setState(state => ({ counter: state.counter + 1 }));
+  }
+
+  onDecrement = () => {
+    this.setState(state => ({ counter: state.counter - 1 }));
+  }
+
+  render() {
+    return (
+      <div>
+        <p>{this.state.counter}</p>
+
+        <button onClick={this.onIncrement} type="button">Increment</button>
+        <button onClick={this.onDecrement} type="button">Decrement</button>
+      </div>
+    );
+  }
+}
+
+Example05:Template Literals in React
+function getGreeting(what) {
+  return `
+    Welcome
+    to
+    ${what}
+  `;
+}
+
+
+Example06: Map, Reduce and Filter
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    var users = [
+      { name: 'Robin', isDeveloper: true },
+      { name: 'Markus', isDeveloper: false },
+    ];
+
+    return (
+      <ul>
+        {users
+          .filter(user => user.isDeveloper)
+          .map(user => <li>{user.name}</li>)
+        }
+      </ul>
+    );
+  }
+}
+
+export default App;
+
+Example07: var, let, and const
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    const users = [
+      { name: 'Robin' },
+      { name: 'Markus' },
+    ];
+
+    return (
+      <ul>
+        {users.map(user => <li>{user.name}</li>)}
+      </ul>
+    );
+  }
+}
+
+export default App;
+
+
+Example08: Import and Export Statements
+const firstname = 'Robin';
+const lastname = 'Wieruch';
+
+export { firstname, lastname };
+...................
+import { firstname, lastname } from './file1.js';
+
+console.log(firstname);
+// output: Robin
+
+
+Example09: Higher-Order Functions
+var animals = [
+  { name: ‘Waffles’, type: ‘dog’, age: 12 },
+  { name: ‘Fluffy’, type: ‘cat’, age: 14 },
+  { name: ‘Spelunky’, type: ‘dog’, age: 4 },
+  { name: ‘Hank’, type: ‘dog’, age: 11 },
+];
+var oldDogNames = 
+  animals
+    .filter(function(animal) {
+      return animal.age > 10 && animal.type === ‘dog’;
+    })
+    .map(function(animal) {
+      return animal.name;
+    });
+Example10: Destructuring and Spread Operators
+var a, b, rest;
+[a, b] = [10, 20];
+
+console.log(a);
+// expected output: 10
+
+console.log(b);
+// expected output: 20
+
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+
+console.log(rest);
+// expected output: [30,40,50]
+....................
+Object ...
+ar o = {p: 42, q: true};
+var {p, q} = o;
+
+console.log(p); // 42
+console.log(q); // true 
+
+// Assign new variable names
+var {p: toto, q: truc} = o;
+
+console.log(toto); // 42
+console.log(truc); // true
+
+Example11: Promise
+/* ES5, using Bluebird */
+var isMomHappy = true;
+
+// Promise
+var willIGetNewPhone = new Promise(
+    function (resolve, reject) {
+        if (isMomHappy) {
+            var phone = {
+                brand: 'Samsung',
+                color: 'black'
+            };
+            resolve(phone);
+        } else {
+            var reason = new Error('mom is not happy');
+            reject(reason);
+        }
+
+    }
+);
+
+
+// call our promise
+var askMom = function () {
+    willIGetNewPhone
+        .then(function (fulfilled) {
+            // yay, you got a new phone
+            console.log(fulfilled);
+        })
+        .catch(function (error) {
+            // ops, mom don't buy it
+            console.log(error.message);
+        });
+}
