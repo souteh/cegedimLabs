@@ -5,10 +5,14 @@ Setup env:
 2. install sublime
 3. configure  node : tools>Build system > new Build system
 	copy on opened window:
-{
-"cmd": ["node", "$file"],
-"selector": "source.js"
-}
+		{
+		"cmd": ["node", "$file"],
+		"selector": "source.js"
+		}
+4. under react-app-boilerplate-master  projet execute npm install
+5. lauch server : npm start
+6. to access server :  localhost:8080
+
 **************************************************************************
 **************************************************************************
 Example01: classes
